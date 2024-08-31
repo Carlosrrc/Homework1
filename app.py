@@ -43,9 +43,8 @@ def prediction():
 @app.route("/joke", methods=["GET", "POST"])
 def joke():
     jokes = [
-        "Why don't scientists trust atoms? Because they make up everything!",
-        "Why did the math book look sad? Because it had too many problems.",
-        "Why did the scarecrow win an award? Because he was outstanding in his field!"
+        "The only thing faster than Singapore's MRT during peak hours is the way we ""chope"" seats with a tissue packet.",
+        "Jay Powell has signalled he is ready to cut US interest rates in September, as he warned that “downside risks” to the labour market had increased."
     ]
     selected_joke = random.choice(jokes)
     return render_template("joke.html", joke=selected_joke)
