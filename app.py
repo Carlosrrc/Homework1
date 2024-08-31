@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import os
 import google.generativeai as palm
+import random
 
 # Fetch the API key from environment variables
 api_key = os.getenv('API_KEY')
@@ -36,7 +37,18 @@ def ai_agent_reply():
 
 @app.route("/prediction", methods=["GET", "POST"])
 def prediction():
-    return render_template("index.html")
+    # Placeholder for future functionality
+    return "Prediction functionality is not implemented yet."
+
+@app.route("/joke", methods=["GET", "POST"])
+def joke():
+    jokes = [
+        "Why don't scientists trust atoms? Because they make up everything!",
+        "Why did the math book look sad? Because it had too many problems.",
+        "Why did the scarecrow win an award? Because he was outstanding in his field!"
+    ]
+    selected_joke = random.choice(jokes)
+    return render_template("joke.html", joke=selected_joke)
 
 if __name__ == "__main__":
     app.run(debug=True)
