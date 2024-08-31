@@ -10,7 +10,7 @@ if api_key:
 else:
     raise ValueError("API_KEY environment variable is not set.")
 
-model = {"model": "models/models/gemini-1.5-flash-latest:generateContent"}
+model = {"model": "models/gemini-1.5-flash-latest:generateContent"}
 
 app = Flask(__name__)
 
