@@ -10,7 +10,7 @@ if api_key:
 else:
     raise ValueError("API_KEY environment variable is not set.")
 
-model = {"model": "models/chat-bison-001"}
+model = {"model": "models/gemini-1_5-flash-latest"}
 
 app = Flask(__name__)
 
