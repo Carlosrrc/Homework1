@@ -3,12 +3,8 @@ import os
 import google.generativeai as palm
 import random
 
-# Fetch the API key from environment variables
 api_key = os.getenv('API_KEY')
-if api_key:
-    palm.configure(api_key=api_key)
-else:
-    raise ValueError("API_KEY environment variable is not set.")
+palm.configure(api_key=api_key)
 
 model = {"model": "models/chat-bison-001"}
 
@@ -37,8 +33,7 @@ def ai_agent_reply():
 
 @app.route("/prediction", methods=["GET", "POST"])
 def prediction():
-    # Placeholder for future functionality
-    return "Prediction functionality is not implemented yet."
+    return "Prediction functionality is not working yet."
 
 @app.route("/joke", methods=["GET", "POST"])
 def joke():
