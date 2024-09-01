@@ -24,7 +24,7 @@ def ai_agent_reply():
     if q:
         try:
             r = palm.chat(messages=q, **model)
-            reply = r.last  # Assuming `r.last` is the intended response
+            reply = r.last 
         except Exception as e:
             reply = f"Error processing your request: {e}"
     else:
