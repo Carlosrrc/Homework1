@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request
 import os
-import google.generativeai as palm
+import google.generativeai as genai
 import random
 
-api_key = os.getenv('API_KEY')
-palm.configure(api_key=api_key)
+api_key = "AIzaSyDbxkAcvhtg0da-99t1iQnvNZ3lcXgEhKE"
+genai.configure(api_key=api_key)
 
-model = {"model": "models/chat-bison-001"}
+model = genai.GenerativeModel("gemini-1.5-flash")
 
 app = Flask(__name__)
 
@@ -23,8 +23,8 @@ def ai_agent_reply():
     q = request.form.get("q")
     if q:
         try:
-            r = palm.chat(messages=q, **model)
-            reply = r.last 
+            r = model.generate_content(q)
+            reply = r.text
         except Exception as e:
             reply = f"Error processing your request: {e}"
     else:
