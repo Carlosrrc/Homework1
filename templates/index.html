@@ -1,13 +1,25 @@
-<h2>Welcome to Financial Robo Advisor</h2>
+<head>
+    <title>Financial Portal</title>
+    <meta name ="viewport" content="width=device-width" initial-scale="1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+</head>
 
-<form action="/ai_agent" method="post">
-    <input type="submit" value="AI Agent">
-</form>
+<body>
+    <div class="container">
 
-<form action="/prediction" method="post">
-    <input type="submit" value="Prediction">
-</form>
+    <h2>Welcome to Financial Robo Advisor</h2>
 
-<form action="/joke" method="post">
-    <input type="submit" value="Joke">
-</form>
+    <form action="/ai_agent" method="post">
+        <input type="submit" value="AI Agent">
+    </form>
+
+    <form action="/prediction" method="post">
+        <input type="submit" value="Prediction">
+    </form>
+
+    <form action="/joke" method="post">
+        <input type="submit" value="Joke">
+    </form>
+
+    </div>
+</body>
