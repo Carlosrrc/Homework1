@@ -44,5 +44,11 @@ def joke():
     selected_joke = random.choice(jokes)
     return render_template("joke.html", joke=selected_joke)
 
+
+@app.route("/paynow", methods=["GET", "POST"])
+def paynow():
+    return (render_template("paynow.html"))
+
+
 if __name__ == "__main__":
     app.run(debug=True)
