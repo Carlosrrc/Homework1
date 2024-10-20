@@ -3,4 +3,4 @@ gunicorn
 google-generativeai
 textblob
 transformers
-tensorflow-cpu
+torch
