@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Sentiment Analysis</h2>
+        
+        <form action="/analyze_sentiment" method="post">
+            <textarea name="text" rows="4" cols="50" placeholder="Enter your text for sentiment analysis..."></textarea><br>
+            <input type="submit" value="Analyze Sentiment">
+        </form>
+
+        <!-- Display sentiment analysis results (if available) -->
+        {% if textblob_polarity is not none %}
+            <h3>Sentiment Analysis Results</h3>
+            <p><strong>TextBlob Sentiment:</strong> Polarity: {{ textblob_polarity }}, Subjectivity: {{ textblob_subjectivity }}</p>
+            <p><strong>Transformers Sentiment:</strong> {{ transformer_sentiment }}, Confidence: {{ transformer_score }}</p>
+        {% elif sentiment_error %}
+            <p>{{ sentiment_error }}</p>
+        {% endif %}
+
+        <a href="/">Back to Home</a>
+    </div>
+</body>
+</html>

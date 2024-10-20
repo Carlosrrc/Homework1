@@ -1,4 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
+import textblob
+from transformers import pipeline
 import os
 import google.generativeai as genai
 import random
@@ -34,6 +36,35 @@ def ai_agent_reply():
 @app.route("/prediction", methods=["GET", "POST"])
 def prediction():
     return "Prediction functionality is not working yet."
+
+# Route to render sentiment.html
+@app.route("/SA", methods=["GET", "POST"])
+def sentiment_page():
+    return render_template("sentiment.html")
+
+# Route to handle sentiment analysis
+@app.route('/analyze_sentiment', methods=['POST'])
+def sentiment_analysis():
+    # Get the text from the form input
+    text = request.form.get('text')
+
+    # Check if input text is provided
+    if not text:
+        return render_template("sentiment.html", sentiment_error="No text provided for sentiment analysis.")
+
+    # Perform sentiment analysis using TextBlob
+    textblob_sentiment = textblob.TextBlob(text).sentiment
+
+    # Perform sentiment analysis using transformers model
+    model = pipeline("sentiment-analysis")
+    transformer_sentiment = model(text)
+
+    # Pass the sentiment result back to sentiment.html
+    return render_template("sentiment.html", 
+                           textblob_polarity=textblob_sentiment.polarity,
+                           textblob_subjectivity=textblob_sentiment.subjectivity,
+                           transformer_sentiment=transformer_sentiment[0]['label'],
+                           transformer_score=transformer_sentiment[0]['score'])
 
 @app.route("/joke", methods=["GET", "POST"])
 def joke():
