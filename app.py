@@ -1,10 +1,9 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 import textblob
 from transformers import pipeline
 import os
 import google.generativeai as genai
 import random
-import tensorflow as tf
 
 api_key = os.getenv('API_KEY')
 genai.configure(api_key=api_key)

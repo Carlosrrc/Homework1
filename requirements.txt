@@ -3,5 +3,3 @@ gunicorn
 google-generativeai
 textblob
 transformers
-torch
-tensorflow==2.12.0  # Explicit TensorFlow version
