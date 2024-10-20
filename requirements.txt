@@ -4,4 +4,4 @@ google-generativeai
 textblob
 transformers
 torch
-tf-keras
+tensorflow==2.12.0  # Explicit TensorFlow version
