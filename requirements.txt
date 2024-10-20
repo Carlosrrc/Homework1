@@ -3,4 +3,3 @@ gunicorn
 google-generativeai
 textblob
 transformers
-flask
